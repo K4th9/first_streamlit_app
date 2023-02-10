@@ -35,10 +35,10 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # output it the screen as a table
 st.dataframe(fruityvice_normalized)
 
-my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+my_cnx = snowflake.connector.connect(**st.secrets["snowflake"]) #need to be st not streamlit
 my_cur = my_cnx.cursor()
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchone()
-st.text("Hello from Snowflake:")
+st.text("The fruit load list contains:")
 st.text(my_data_row)
 
