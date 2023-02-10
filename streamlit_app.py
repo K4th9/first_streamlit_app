@@ -38,12 +38,13 @@ try:
 		back_from_function = get_fruityvice_data(fruit_choice)
 		st.dataframe(back_from_function)
 
-#except URLError as e:
-#	st.error()
+except URLError as e:
+	st.error()
 
 # don'f run anything past here while we troubeshoot
 #st.stop()
 
+st.header("The fruit load list contains:")
 # Snowflake-related functions
 def get_fruit_load_list():
 	with my_cnx.cursor() as my_cur:
